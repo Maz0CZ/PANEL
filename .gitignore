@@ -1,0 +1,5 @@
+/vendor/
+/temp/
+/log/
+/data/panel.sqlite
+/app/config/local.neon

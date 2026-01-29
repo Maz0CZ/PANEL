@@ -1,0 +1,9 @@
+{block title}Chyba{/block}
+
+<div class="card card-dark">
+    <div class="card-body">
+        <h1 class="h4">Došlo k chybě</h1>
+        <p class="text-secondary">{$exception?->getMessage()}</p>
+        <a class="btn btn-outline-light" href="/">Zpět na úvod</a>
+    </div>
+</div>

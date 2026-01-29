@@ -1,0 +1,41 @@
+parameters:
+  database:
+    path: %dataDir%/panel.sqlite
+  security:
+    sessionName: ultimatepanel
+  provisioning:
+    baseDir: /opt/ultimatepanel/servers
+    spigotJar: /opt/ultimatepanel/jars/spigot.jar
+    portStart: 25565
+    screenPrefix: up_server_
+    logFile: console.log
+    eula: true
+    maxServersPerUser: 1
+  ftp:
+    baseDir: /opt/ultimatepanel/servers
+    host: 127.0.0.1
+    port: 21
+services:
+  - App\Model\Database
+  - App\Model\UserManager
+  - App\Model\PackageManager
+  - App\Model\ServerManager
+  - App\Model\ProvisioningService
+  - App\Model\ConsoleService
+  - App\Model\FtpService
+  - App\Model\MailerService
+  router:
+    factory: App\Router\RouterFactory::createRouter
+
+application:
+  errorPresenter: Error
+
+session:
+  expiration: 14 days
+  name: %security.sessionName%
+
+security:
+  authenticator: App\Model\UserManager
+
+latte:
+  xdebug: false

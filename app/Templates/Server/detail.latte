@@ -1,0 +1,42 @@
+{block title}Server detail{/block}
+
+<div class="d-flex align-items-center justify-content-between mb-3">
+    <div>
+        <h1 class="h4 mb-1">Server #{$server['id']} - {$server['game']}</h1>
+        <p class="text-secondary mb-0">Balíček: {$server['package_name']} ({$server['ram_mb']} MB RAM) • Port: {$server['port']}</p>
+    </div>
+    <div class="d-flex gap-2">
+        <a class="btn btn-outline-accent" n:href="Server:console $server['id']"><i class="fa-solid fa-terminal"></i> Konzole</a>
+        <a class="btn btn-outline-light" n:href="Server:files $server['id']"><i class="fa-solid fa-folder"></i> Soubory</a>
+    </div>
+</div>
+
+<div class="row g-3">
+    <div class="col-lg-8">
+        <div class="card card-dark">
+            <div class="card-body">
+                <h2 class="h6">Ovládání</h2>
+                <div class="d-flex flex-wrap gap-2">
+                    <a class="btn btn-accent" n:href="action! $server['id'], 'start'"><i class="fa-solid fa-play"></i> Start</a>
+                    <a class="btn btn-warning" n:href="action! $server['id'], 'reload'"><i class="fa-solid fa-rotate"></i> Reload</a>
+                    <a class="btn btn-danger" n:href="action! $server['id'], 'stop'"><i class="fa-solid fa-stop"></i> Stop</a>
+                </div>
+                <div class="mt-3 text-secondary small">Status: {$server['status']}</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card card-dark h-100">
+            <div class="card-body">
+                <h2 class="h6">FTP přístup</h2>
+                <p class="small text-secondary">Údaje pro připojení k vestavěnému FTP klientu nebo externímu klientovi.</p>
+                <ul class="list-unstyled small">
+                    <li><strong>Uživatel:</strong> {$server['ftp_user']}</li>
+                    <li><strong>Heslo:</strong> {$server['ftp_password']}</li>
+                    <li><strong>Host:</strong> {$ftpHost}</li>
+                    <li><strong>Port:</strong> {$ftpPort}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

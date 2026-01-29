@@ -1,0 +1,37 @@
+{block title}Správce souborů{/block}
+
+<div class="d-flex align-items-center justify-content-between mb-3">
+    <div>
+        <h1 class="h4 mb-1">Souborový manager</h1>
+        <p class="text-secondary mb-0">Vestavěný FTP klient pro {$server['game']}.</p>
+    </div>
+    <a class="btn btn-outline-light" n:href="Server:detail $server['id']">Zpět na detail</a>
+</div>
+
+<div class="card card-dark">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-dark table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th>Název</th>
+                        <th>Typ</th>
+                        <th>Velikost</th>
+                        <th>Upraveno</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {foreach $files as $file}
+                        <tr>
+                            <td>{$file['name']}</td>
+                            <td>{if $file['is_dir']}Složka{else}Soubor{/if}</td>
+                            <td>{if $file['size'] !== null}{$file['size']} B{/if}</td>
+                            <td>{$file['modified']}</td>
+                        </tr>
+                    {/foreach}
+                </tbody>
+            </table>
+        </div>
+        <p class="text-secondary small">Editace souborů je dostupná přes FTP nebo externího klienta.</p>
+    </div>
+</div>

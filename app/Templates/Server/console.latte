@@ -1,0 +1,33 @@
+{block title}Live konzole{/block}
+
+<div class="d-flex align-items-center justify-content-between mb-3">
+    <div>
+        <h1 class="h4 mb-1">Live konzole - Server #{$server['id']}</h1>
+        <p class="text-secondary mb-0">Bez RCON. Přímý vstup do obrazovky procesu.</p>
+    </div>
+    <a class="btn btn-outline-light" n:href="Server:detail $server['id']">Zpět na detail</a>
+</div>
+
+<div class="card card-dark">
+    <div class="card-body">
+        <div class="console-output" id="consoleOutput">{$log|escape}</div>
+        <div class="mt-3">
+            {control commandForm}
+        </div>
+    </div>
+</div>
+
+<script>
+    const consoleOutput = document.getElementById('consoleOutput');
+    async function refreshLog() {
+        try {
+            const response = await fetch('{link log! $server['id']}');
+            const data = await response.json();
+            consoleOutput.innerText = data.log || '';
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        } catch (error) {
+            consoleOutput.innerText = 'Log se nepodařilo načíst.';
+        }
+    }
+    setInterval(refreshLog, 2000);
+</script>

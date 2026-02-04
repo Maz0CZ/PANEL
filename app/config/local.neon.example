@@ -1,0 +1,10 @@
+parameters:
+  database:
+    path: %dataDir%/panel.sqlite
+  mailer:
+    smtp:
+      host: smtp.example.com
+      username: user@example.com
+      password: secret
+      secure: tls
+      port: 587

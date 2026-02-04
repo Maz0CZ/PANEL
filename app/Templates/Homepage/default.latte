@@ -1,0 +1,48 @@
+{block title}Landing page{/block}
+
+<section class="hero p-4 p-md-5 rounded-4 mb-4">
+    <div class="row align-items-center">
+        <div class="col-lg-7">
+            <h1 class="display-5 fw-bold mb-3">Hyperrealistický hosting herních serverů</h1>
+            <p class="lead text-secondary">UltimatePanel je futuristický, rychlý a připravený pro Debian. Vytvořte server během sekund, spravujte jej pomocí živé konzole bez RCON a mějte plnou kontrolu.</p>
+            <div class="d-flex gap-3">
+                <a class="btn btn-accent" n:href="Sign:up">Začít zdarma</a>
+                <a class="btn btn-outline-light" href="#balicky">Zobrazit balíčky</a>
+            </div>
+        </div>
+        <div class="col-lg-5 mt-4 mt-lg-0">
+            <div class="futuristic-panel p-4 rounded-4">
+                <div class="d-flex justify-content-between mb-3">
+                    <span class="badge text-bg-accent">Live Console</span>
+                    <span class="text-accent">#ab47bc</span>
+                </div>
+                <p class="font-mono small text-success">[INFO] Server startuje... žádné RCON, pouze přímý vstup.</p>
+                <p class="font-mono small text-secondary">[INFO] Vytvořen FTP účet pro správu souborů.</p>
+                <p class="font-mono small text-secondary">[INFO] Podpora více her (Minecraft, Valheim, CS2...).</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="balicky">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+        <h2 class="h4">Balíčky serverů</h2>
+        <span class="text-secondary">Herní hosting na míru</span>
+    </div>
+
+    <div class="row g-3">
+        {foreach $packages as $package}
+            <div class="col-md-4">
+                <div class="card card-dark h-100">
+                    <div class="card-body">
+                        <div class="icon-circle text-accent mb-3"><i class="fa-solid fa-microchip"></i></div>
+                        <h3 class="h5">{$package['name']}</h3>
+                        <p class="text-secondary">{$package['description']}</p>
+                        <p class="fw-semibold">RAM: {$package['ram_mb']} MB</p>
+                        <a class="btn btn-outline-accent w-100" n:href="Sign:up">Vybrat balíček</a>
+                    </div>
+                </div>
+            </div>
+        {/foreach}
+    </div>
+</section>

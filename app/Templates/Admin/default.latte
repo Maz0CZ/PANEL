@@ -1,0 +1,35 @@
+{block title}Admin{/block}
+
+<h1 class="h4 mb-3">Admin panel</h1>
+
+<div class="card card-dark">
+    <div class="card-body">
+        <h2 class="h6">Všechny servery</h2>
+        <div class="table-responsive">
+            <table class="table table-dark table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Uživatel</th>
+                        <th>Hra</th>
+                        <th>Balíček</th>
+                        <th>Port</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {foreach $servers as $server}
+                        <tr>
+                            <td>#{$server['id']}</td>
+                            <td>{$server['user_email']}</td>
+                            <td>{$server['game']}</td>
+                            <td>{$server['package_name']}</td>
+                            <td>{$server['port']}</td>
+                            <td>{$server['status']}</td>
+                        </tr>
+                    {/foreach}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
